@@ -3,8 +3,8 @@
 A note-taking app that is connected to a Ktor RESTApi with local caching, entirely made with Jetpack Compose following MVVM architecture
 Libraries: Retrofit, Room, LiveData, ViewModel, Jetpack Compose
 ## Screenshots:
+![Screenshot](https://raw.githubusercontent.com/Bogomil-Stoyanov/NoteAppJetpackCompose/master/lightTheme.png)
 ![Screenshot](https://raw.githubusercontent.com/Bogomil-Stoyanov/NoteAppJetpackCompose/master/darkTheme.png)
-![Screenshot](https://raw.githubusercontent.com/Bogomil-Stoyanov/NoteAppJetpackCompose/master/lightTheme.pgn)
 
 License
 -------
