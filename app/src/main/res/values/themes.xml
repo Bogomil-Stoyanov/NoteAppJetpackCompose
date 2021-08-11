@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/primary</item>
+    <item name="colorPrimaryDark">@color/primary</item>
+    <item name="colorAccent">@color/primary</item>
+    <item name="android:colorBackground">@color/primary</item>
+    <item name="android:windowBackground">@color/primary</item>
+    </style>
+
+    <style name="Theme.NoteCompose" parent="Theme"/>
+</resources>
