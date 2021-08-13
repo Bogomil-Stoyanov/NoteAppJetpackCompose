@@ -1,6 +1,5 @@
 package eu.bbsapps.notecompose.ui.notelist
 
-import android.accessibilityservice.AccessibilityService
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -20,6 +19,8 @@ import androidx.navigation.NavController
 import eu.bbsapps.notecompose.data.local.entities.Note
 import eu.bbsapps.notecompose.ui.notelist.components.NoteComponent
 import eu.bbsapps.notecompose.ui.util.Screen
+import eu.bbsapps.notecompose.ui.util.largeDp
+import eu.bbsapps.notecompose.ui.util.mediumDp
 import eu.bbsapps.notecompose.util.Event
 import eu.bbsapps.notecompose.util.Resource
 
@@ -28,7 +29,7 @@ fun NotesScreen(navController: NavController, viewModel: NotesViewModel = hiltVi
 
     val loginStatus: Event<Resource<List<Note>>>? by viewModel.allNotes.observeAsState(null)
 
-    Scaffold(Modifier.padding(24.dp),
+    Scaffold(Modifier.padding(mediumDp),
         floatingActionButton = {
             FloatingActionButton(onClick = {
                 navController.popBackStack()
@@ -42,7 +43,7 @@ fun NotesScreen(navController: NavController, viewModel: NotesViewModel = hiltVi
         var expanded by remember { mutableStateOf(false) }
         LazyColumn {
             item {
-                Spacer(modifier = Modifier.height(48.dp))
+                Spacer(modifier = Modifier.height(largeDp))
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth(),
@@ -50,9 +51,10 @@ fun NotesScreen(navController: NavController, viewModel: NotesViewModel = hiltVi
                 ) {
                     Text(text = "Your notes", fontSize = 32.sp)
                     Column {
-                        Icon(Icons.Outlined.Menu, contentDescription = "More options",
+                        Icon(
+                            Icons.Outlined.Menu, contentDescription = "More options",
                             Modifier
-                                .size(32.dp)
+                                .size(mediumDp)
                                 .clickable {
                                     expanded = !expanded
                                 })

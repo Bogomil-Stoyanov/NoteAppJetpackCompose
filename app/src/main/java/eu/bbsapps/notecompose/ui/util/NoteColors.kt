@@ -3,7 +3,7 @@ package eu.bbsapps.notecompose.ui.util
 import androidx.compose.ui.graphics.Color
 
 
-val noteColors = listOf<Color>(
+val noteColors = listOf(
     Color(0xFFFF1744),
     Color(0xFFF50057),
     Color(0xFFD500F9),

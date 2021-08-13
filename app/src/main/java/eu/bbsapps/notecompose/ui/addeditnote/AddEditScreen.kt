@@ -17,10 +17,12 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import eu.bbsapps.notecompose.ui.addeditnote.components.DeleteNoteDialog
-import eu.bbsapps.notecompose.ui.addeditnote.components.UnsavedChangesDialog
 import eu.bbsapps.notecompose.ui.addeditnote.components.NoteField
 import eu.bbsapps.notecompose.ui.addeditnote.components.NoteTitleTextField
+import eu.bbsapps.notecompose.ui.addeditnote.components.UnsavedChangesDialog
 import eu.bbsapps.notecompose.ui.util.Screen
+import eu.bbsapps.notecompose.ui.util.largeDp
+import eu.bbsapps.notecompose.ui.util.mediumDp
 import eu.bbsapps.notecompose.ui.util.noteColors
 import kotlinx.coroutines.launch
 
@@ -55,41 +57,47 @@ fun AddEditNoteScreen(
 
     Scaffold(
         backgroundColor = MaterialTheme.colors.background,
-        modifier = Modifier.padding(top = 56.dp)
+        modifier = Modifier.padding(top = largeDp)
     ) {
         PositionsBottomSheet(noteColor = noteColor) {
-            Column(Modifier.padding(24.dp)) {
-                Row(Modifier.fillMaxWidth(),
+            Column(Modifier.padding(mediumDp)) {
+                Row(
+                    Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically) {
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Icon(
                         Icons.Outlined.ArrowBack,
                         contentDescription = "Back",
-                        Modifier.size(32.dp).clickable {
-                            if (viewModel.hasNoteChanged()) {
-                                setShowUnsavedChangesDialog(true)
+                        Modifier
+                            .size(mediumDp)
+                            .clickable {
+                                if (viewModel.hasNoteChanged()) {
+                                    setShowUnsavedChangesDialog(true)
 
-                            } else {
-                                navController.popBackStack()
-                                navController.navigate(Screen.NotesScreen.route)
-                            }
-                        })
+                                } else {
+                                    navController.popBackStack()
+                                    navController.navigate(Screen.NotesScreen.route)
+                                }
+                            })
 
                     if (viewModel.note.value?.peekContent()?.data?.id != null) {
                         Icon(
                             Icons.Outlined.Delete,
                             contentDescription = "Delete note",
-                            Modifier.size(32.dp).clickable {
-                                println("clicked delete")
-                                setShowDeleteNoteDialog(true)
-                                /*if (viewModel.hasNoteChanged()) {
+                            Modifier
+                                .size(mediumDp)
+                                .clickable {
+                                    println("clicked delete")
+                                    setShowDeleteNoteDialog(true)
+                                    /*if (viewModel.hasNoteChanged()) {
                                     setShowDialog(true)
 
                                 } else {
                                     navController.popBackStack()
                                     navController.navigate(Screen.NotesScreen.route)
                                 }*/
-                            })
+                                })
                     }
                 }
                 DeleteNoteDialog(
@@ -123,7 +131,7 @@ fun AddEditNoteScreen(
                         shape = CircleShape,
                         // colors = ButtonDefaults.buttonColors(backgroundColor = noteColors[viewModel.noteColorPosition.value]),
                         colors = ButtonDefaults.buttonColors(backgroundColor = noteColors[noteColor.value]),
-                        modifier = Modifier.size(32.dp)
+                        modifier = Modifier.size(mediumDp)
                     ) {
 
                     }
@@ -221,7 +229,7 @@ fun PositionsBottomSheet(
                 Spacer(modifier = Modifier.height(48.dp))
 
 
-                Column() {
+                Column {
                     val noteIds = (0..15).toList()
                     noteIds.chunked(4).forEach { list ->
                         Row(
@@ -247,7 +255,7 @@ fun PositionsBottomSheet(
                             }
 
                         }
-                        Spacer(modifier = Modifier.height(24.dp))
+                        Spacer(modifier = Modifier.height(mediumDp))
                     }
                 }
             }

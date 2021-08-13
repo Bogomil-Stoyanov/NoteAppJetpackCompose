@@ -19,6 +19,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import eu.bbsapps.notecompose.ui.components.PasswordTextField
 import eu.bbsapps.notecompose.ui.util.Screen
+import eu.bbsapps.notecompose.ui.util.mediumDp
+import eu.bbsapps.notecompose.ui.util.smallDp
 import eu.bbsapps.notecompose.util.Resource
 import eu.bbsapps.notecompose.util.Status
 
@@ -27,7 +29,6 @@ fun RegisterScreen(navController: NavController, viewModel: RegisterViewModel = 
 
     val snackbarHostState = remember { SnackbarHostState() }
     val loginStatus: Resource<String>? by viewModel.registerStatus.observeAsState(null)
-    val scope = rememberCoroutineScope()
     var isProgressBarVisible by remember { mutableStateOf(false) }
 
     LaunchedEffect(loginStatus) {
@@ -51,9 +52,9 @@ fun RegisterScreen(navController: NavController, viewModel: RegisterViewModel = 
     Scaffold(
         scaffoldState = rememberScaffoldState(snackbarHostState = snackbarHostState)
     ) {
-        Column(Modifier.padding(24.dp)) {
+        Column(Modifier.padding(mediumDp)) {
 
-            Spacer(modifier = Modifier.height(36.dp))
+            Spacer(modifier = Modifier.height(mediumDp))
 
             IconButton(onClick = {
                 navController.popBackStack(Screen.LoginScreen.route, true)
@@ -64,7 +65,7 @@ fun RegisterScreen(navController: NavController, viewModel: RegisterViewModel = 
 
             Text(text = "Create an account", fontSize = 32.sp)
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(mediumDp))
 
 
             TextField(
@@ -82,7 +83,7 @@ fun RegisterScreen(navController: NavController, viewModel: RegisterViewModel = 
                 },
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(smallDp))
 
             PasswordTextField(
                 passwordText = viewModel.passwordText.value,
@@ -104,7 +105,7 @@ fun RegisterScreen(navController: NavController, viewModel: RegisterViewModel = 
                 hint = "Confirm Password"
             )
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(mediumDp))
 
             Button(onClick = {
                 viewModel.register()
@@ -113,7 +114,7 @@ fun RegisterScreen(navController: NavController, viewModel: RegisterViewModel = 
                 Text(text = "Create an account", fontSize = 24.sp)
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(smallDp))
 
             SignInText {
                 navController.popBackStack(Screen.LoginScreen.route, true)

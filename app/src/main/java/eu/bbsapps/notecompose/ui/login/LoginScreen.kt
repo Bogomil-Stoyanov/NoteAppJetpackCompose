@@ -17,6 +17,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import eu.bbsapps.notecompose.ui.components.PasswordTextField
 import eu.bbsapps.notecompose.ui.util.Screen
+import eu.bbsapps.notecompose.ui.util.largeDp
+import eu.bbsapps.notecompose.ui.util.mediumDp
+import eu.bbsapps.notecompose.ui.util.smallDp
 import eu.bbsapps.notecompose.util.Resource
 import eu.bbsapps.notecompose.util.Status
 
@@ -27,8 +30,6 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = hiltVi
         if (viewModel.isLoggedIn()) {
             navController.popBackStack()
             navController.navigate(Screen.NotesScreen.route)
-        } else {
-            println("not logged it")
         }
     }
 
@@ -45,12 +46,11 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = hiltVi
             }
             Status.ERROR -> {
                 isProgressBarVisible = false
-
                 snackbarHostState.showSnackbar(loginStatus?.message!!)
 
             }
             Status.LOADING -> {
-
+                /* NO OP*/
             }
         }
     }
@@ -58,13 +58,13 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = hiltVi
     Scaffold(
         scaffoldState = rememberScaffoldState(snackbarHostState = snackbarHostState)
     ) {
-        Column(Modifier.padding(24.dp)) {
+        Column(Modifier.padding(mediumDp)) {
 
-            Spacer(modifier = Modifier.height(48.dp))
+            Spacer(modifier = Modifier.height(largeDp))
 
             Text(text = "Welcome back", fontSize = 32.sp)
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(mediumDp))
 
             TextField(
                 modifier = Modifier
@@ -82,7 +82,7 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = hiltVi
                 }
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(smallDp))
 
 
             /*  val isValidConfirmPassword = AuthValidator.isPasswordAndConfirmPasswordSame(
@@ -100,7 +100,7 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = hiltVi
                 hint = "Password"
             )
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(mediumDp))
 
             Button(onClick = {
                 /*navController.popBackStack()
@@ -113,7 +113,7 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = hiltVi
                 Text(text = "Login", fontSize = 24.sp)
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(smallDp))
 
             SignUpText {
                 navController.navigate(Screen.RegisterScreen.route)

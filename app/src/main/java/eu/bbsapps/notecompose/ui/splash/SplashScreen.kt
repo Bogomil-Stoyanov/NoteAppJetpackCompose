@@ -7,7 +7,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -17,10 +16,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import eu.bbsapps.notecompose.R
-import eu.bbsapps.notecompose.ui.util.Navigation
 import eu.bbsapps.notecompose.ui.util.Screen
 import eu.bbsapps.notecompose.util.Constants
 import kotlinx.coroutines.delay
@@ -62,10 +59,10 @@ fun SplashScreen(
                 painter = painterResource(
                     id = if (isSystemInDarkTheme()) {
                         R.drawable.logo_dark
-                    }else R.drawable.logo_light
+                    } else R.drawable.logo_light
                 ),
                 contentDescription = "Logo",
-                modifier = Modifier.scale(scale.value+1.5f)
+                modifier = Modifier.scale(scale.value + 1.5f)
             )
         }
     }
